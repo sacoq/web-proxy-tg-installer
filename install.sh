@@ -29,7 +29,7 @@ cat << "EOF"
 =================================================================
                                                                  
          T E L E G R A M   W E B   P R O X Y                     
-                     by @sacoq                              
+                     by @sacoq                                    
                                                                  
 =================================================================
 EOF
@@ -46,12 +46,15 @@ else
     DOMAIN="${DOMAIN:-}"
 fi
 
-if [[ -z "$DOMAIN" ]]; then
-    read -rp "$(echo -e "${BLUE}Введите домен для прокси (например, proxy.example.com): ${RESET}")" DOMAIN
+if [[ -z "$DOMAIN" || "$DOMAIN" == "proxy.example.com" ]]; then
+    if [[ "$DOMAIN" == "proxy.example.com" ]]; then
+        warn "Вы указали домен-пример (proxy.example.com)."
+    fi
+    read -rp "$(echo -e "${BLUE}Введите ВАШ домен для прокси (А-запись должна указывать на этот сервер): ${RESET}")" DOMAIN
 fi
 
-if [[ -z "$DOMAIN" ]]; then
-    error "Домен не указан! Установка прервана."
+if [[ -z "$DOMAIN" || "$DOMAIN" == "proxy.example.com" ]]; then
+    error "Реальный домен не указан! Установка прервана."
 fi
 
 EMAIL="admin@${DOMAIN}"
