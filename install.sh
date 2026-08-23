@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -euo pipefail
 umask 022
 
@@ -131,20 +132,35 @@ chown root:tproxy /etc/tproxy-server
 chmod 0750 /var/lib/caddy
 chmod 0755 /srv/tproxy-site
 
-cat > /srv/tproxy-site/index.html <<EOF
-<!doctype html>
-<html>
+cat > /srv/tproxy-site/index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Web Proxy</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Under Maintenance</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width:700px; margin:80px auto; padding:20px; text-align: center; }
-        h1 { color: #2AABEE; }
+        body {
+            margin: 0; padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8f9fa; color: #333;
+            display: flex; align-items: center; justify-content: center; height: 100vh;
+        }
+        .container {
+            text-align: center; background: #fff; padding: 50px;
+            border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 500px;
+        }
+        h1 { margin-top: 0; color: #2c3e50; font-size: 26px; }
+        p { color: #666; line-height: 1.6; font-size: 16px; }
+        .footer { margin-top: 30px; font-size: 12px; color: #aaa; }
     </style>
 </head>
 <body>
-    <h1>Telegram Web Proxy</h1>
-    <p>Secure web transport relay is running.</p>
+    <div class="container">
+        <h1>We'll be right back</h1>
+        <p>Our website is currently undergoing scheduled maintenance and upgrades. We apologize for the inconvenience and appreciate your patience.</p>
+        <div class="footer">&copy; 2026 IT Operations. All rights reserved.</div>
+    </div>
 </body>
 </html>
 EOF
