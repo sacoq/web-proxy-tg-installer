@@ -24,7 +24,7 @@ echo -e "${GREEN}   \ V  V /  __/ |_) |   |  __/| | | (_) >  <| |_| |     ${RESE
 echo -e "${GREEN}    \_/\_/ \___|_.__/    |_|   |_|  \___/_/\_\\\__, |     ${RESET}"
 echo -e "${GREEN}                                              |___/      ${RESET}"
 echo -e "${CYAN}========================================================================${RESET}"
-echo -e "${YELLOW}                      by xanka                  ${RESET}"
+echo -e "${YELLOW}                 AUTO-INSTALLER by @sacoq                  ${RESET}"
 echo -e "${CYAN}========================================================================${RESET}"
 echo ""
 
@@ -37,16 +37,7 @@ if [[ $EUID -ne 0 ]]; then
     error "Скрипт должен быть запущен от имени root (используйте sudo)"
 fi
 
-echo -e "${CYAN}"
-cat << "EOF"
-=================================================================
-                                                                 
-         T E L E G R A M   W E B   P R O X Y                     
-                     by xanka                                    
-                                                                 
-=================================================================
-EOF
-echo -e "${RESET}"
+
 
 if [[ -f /root/telegram_webproxy_info.txt ]]; then
     warn "Прокси уже установлен! Данные находятся в файле /root/telegram_webproxy_info.txt"
